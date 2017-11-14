@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css?family=Patrick+Hand');
+
+
+/*** media queries ***/
+// https://davidwalsh.name/write-media-queries-sass
+$phone-width: 320px;
+$tablet-width: 768px;
+$desktop-width: 1024px;
+
+@mixin phone {
+	@media (min-width: #{$phone-width}) and (max-width: #{$tablet-width - 1px}) {
+		@content;
+	}
+}
+
+@mixin tablet {
+	@media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+		@content;
+	}
+}
+
+@mixin desktop {
+	@media (min-width: #{$desktop-width}) {
+		@content;
+	}
+}
+
+@mixin mobile {
+	@media (max-width: #{$tablet-width}) {
+		@content;
+	}
+}
+
+
+$primary: #006699;
+
+$header-height: 75px;
+$info-height: 200px;
+
+
+body {
+	font-family: 'Patrick Hand', cursive;
+
+}
+
+* {
+	text-align: center;
+	margin: 0 auto;
+
+}
+
+h1, h2 {
+	color: $primary;
+}
+
+
+
+header {
+	height: $header-height;
+	background-color: #0E566C;
+
+	//position: fixed;
+	//top:0;
+	//left:0;
+
+	width: 100%;
+
+}
+
+.wrapper {
+	//display: flex;
+	//flex-direction: column;
+
+	//height:100%;
+
+	@include mobile {
+		height: auto;
+		width: 100%;
+		position: relative;
+	}
+}
+
+.left {
+
+	background: gray;
+	width: 30%;
+	height: calc(100% - #{$header-height});
+	//// float: left;
+	position: fixed;
+	top: $header-height;
+	left:0;
+	//min-width: 200px;
+
+
+	@include mobile {
+		height: auto;
+		width: 100%;
+		position: relative;
+		top: 0;
+	}
+
+
+
+	//@include tablet {
+	//	height: auto;
+	//	position: relative;
+	//}
+}
+
+
+.top-right, .bottom-right{
+	position: fixed;
+	left: 30%;
+	right: 0;
+	height: 50%;
+
+	@include mobile {
+		position: relative;
+		width: 100%;
+		left: 0;
+	}
+
+}
+
+.top-right{
+	background-color: blue;
+	top: $header-height;
+	//height: $info-height;
+
+	//min-height: 200px;
+
+	//height: calc(100% - #{$header-height});
+
+    //
+	//height: 50%;
+	//position: fixed;
+	//top: $header-height;
+	//left:200px;
+	////min-width: 200px;
+    //
+	//@include tablet {
+	//	height: auto;
+	//	width: 100%;
+	//	position: relative;
+	//}
+
+	@include mobile {
+		top: 0;
+		height: 200px;
+	}
+}
+
+.bottom-right{
+	background-color: green;
+	bottom: 0;
+
+	//height: calc(100% - #{$header-height} - #{$info-height});
+	//flex: 1;
+	//height:50%;
+	//min-height: 100px;
+
+	@include mobile {
+		height: 300px;
+	}
+
+}
+
+footer {
+
+}
+
+
+
+// @media screen and (max-width: 960px) {
+//
+// }
