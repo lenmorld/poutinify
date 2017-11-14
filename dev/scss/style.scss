@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Patrick+Hand');
+@import url('https://fonts.googleapis.com/css?family=Patrick+Hand|Fredoka+One');
 
 
 /*** media queries ***/
@@ -32,15 +32,24 @@ $desktop-width: 1024px;
 }
 
 
-$primary: #006699;
+
+@mixin padding {
+	padding: 10px;
+}
+
+$primary: orange;
+$light-cheese: #ffb97b;
+$gravy: #86644f;
 
 $header-height: 75px;
 $info-height: 200px;
 
 
 body {
-	font-family: 'Patrick Hand', cursive;
+	//font-family: 'Patrick Hand', cursive;
 
+	font-family: 'Fredoka One', cursive;
+	color: $gravy;
 }
 
 * {
@@ -57,7 +66,8 @@ h1, h2 {
 
 header {
 	height: $header-height;
-	background-color: #0E566C;
+	background-color: $gravy;
+	padding: 5px;
 
 	//position: fixed;
 	//top:0;
@@ -82,7 +92,9 @@ header {
 
 .left {
 
-	background: gray;
+	@include padding;
+
+	background: #ffdb99;
 	width: 30%;
 	height: calc(100% - #{$header-height});
 	//// float: left;
@@ -99,8 +111,6 @@ header {
 		top: 0;
 	}
 
-
-
 	//@include tablet {
 	//	height: auto;
 	//	position: relative;
@@ -109,6 +119,8 @@ header {
 
 
 .top-right, .bottom-right{
+	@include padding;
+	
 	position: fixed;
 	left: 30%;
 	right: 0;
@@ -123,7 +135,7 @@ header {
 }
 
 .top-right{
-	background-color: blue;
+	background-color: #ffa500;
 	top: $header-height;
 	//height: $info-height;
 
@@ -151,7 +163,7 @@ header {
 }
 
 .bottom-right{
-	background-color: green;
+	background-color: #e69500;
 	bottom: 0;
 
 	//height: calc(100% - #{$header-height} - #{$info-height});
