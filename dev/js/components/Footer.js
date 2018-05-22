@@ -10,7 +10,6 @@ class Footer extends React.Component {
     return [d.getHours(), d.getMinutes(), d.getSeconds()].join(":");
   }
 
-
   render() {
     return(
       <div>

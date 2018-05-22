@@ -8,7 +8,12 @@ import '../../scss/style.scss';    // scss can be used by all
 import Header from './Header';
 import Footer from './Footer';
 
+import PlaceList from './PlaceList';
+
 class App extends React.Component {
+
+    // TODO: ajax call to get poutine places
+
   render() {
     return(
         <div>
@@ -16,11 +21,9 @@ class App extends React.Component {
             <Header />
           </header>
 
-
-
             <div className="left">
-                left
-
+                <h3>poutine places</h3>
+                <PlaceList />
             </div>
 
             <div className="wrapper">
@@ -32,8 +35,6 @@ class App extends React.Component {
                     bottom right
                 </div>
             </div>
-
-
 
           {/*<footer>*/}
             {/*<Footer />*/}

@@ -100,7 +100,7 @@ header {
 
 .left {
 
-	@include padding;
+	//@include padding;
 
 	background: #ffdb99;
 	width: 30%;
@@ -188,6 +188,18 @@ header {
 footer {
 
 }
+
+
+
+
+.place-list-item {
+	background-color: #e69500;
+	border: 2px dashed $gravy;
+	color: $gravy;
+	margin: 10px auto;
+	width: 90%;
+}
+
 
 
 
