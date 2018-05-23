@@ -9,10 +9,35 @@ import Header from './Header';
 import Footer from './Footer';
 
 import PlaceList from './PlaceList';
+import PlaceDetailInfo from './PlaceDetailInfo';
 
 class App extends React.Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            // hard-coded for now
+            places: [
+                {
+                    id: 0,
+                    name: "La Banquise",
+                    address: "Parc La Fontaine"
+                }, {
+                    id: 1,
+                    name: "Poutineville",
+                    address: "Rue Ontario"
+                }
+            ],
+          selectedPlace: null,
+        };
+    }
+
+
     // TODO: ajax call to get poutine places
+    placesFetch() {
+
+    }
 
   render() {
     return(
@@ -23,12 +48,16 @@ class App extends React.Component {
 
             <div className="left">
                 <h3>poutine places</h3>
-                <PlaceList />
+                <PlaceList
+                    places={this.state.places}
+                    onPlaceSelect={selectedPlace => this.setState({selectedPlace})}
+                    selectedPlace={this.state.selectedPlace}
+                />
             </div>
 
             <div className="wrapper">
                 <div className="top-right">
-                    top right
+                    <PlaceDetailInfo place={this.state.selectedPlace} />
                 </div>
 
                 <div className="bottom-right">

@@ -4,33 +4,25 @@ import PlaceListItem from './PlaceListItem';
 
 const PlaceList = (props) => {
 
-    // const placeListItems = props.
-
-    // hard-coded for now
-    const places = [
-        {
-            name: "La Banquise",
-            address: "Parc La Fontaine"
-        }, {
-            name: "Poutineville",
-            address: "Rue Ontario"
-        }
-    ];
-
+    const places = props.places;
 
     // replace with props.places when AJAX ready
     const placeListItems = places.map((place) => {
        return (
            <PlaceListItem
                 place={place}
+                onPlaceSelect={props.onPlaceSelect}
+                key={place.id}
+                isSelected={props.selectedPlace && (props.selectedPlace.id === place.id)}
            />
        )
     });
 
-
     return (
         <div>
-            {placeListItems}
+            <ul>
+                {placeListItems}
+            </ul>
         </div>
     )
 

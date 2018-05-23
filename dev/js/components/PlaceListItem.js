@@ -1,17 +1,19 @@
 import React from 'react';
 
-const PlaceListItem = (props) => {
+const PlaceListItem = ({place, onPlaceSelect, isSelected}) => {
 
-    const place  = props.place;
+    const selectedClassName = isSelected ? "place-list-item-selected" : "";
+    let classNames = `${selectedClassName} place-list-item`;
 
     return (
-        <div className="place-list-item">
-            <h2>{place.name}</h2>
-            <h3>{place.address}</h3>
-        </div>
+        <li onClick={() => onPlaceSelect(place)}>
+            <div className={classNames}>
+                <h2>{place.name}</h2>
+                <p>{place.address}</p>
+            </div>
+        </li>
 
     );
 }
-
 
 export default PlaceListItem;
