@@ -10,6 +10,7 @@ import Footer from './Footer';
 
 import PlaceList from './PlaceList';
 import PlaceDetailInfo from './PlaceDetailInfo';
+import PlaceDetailMap from './PlaceDetailMap';
 
 class App extends React.Component {
 
@@ -22,14 +23,22 @@ class App extends React.Component {
                 {
                     id: 0,
                     name: "La Banquise",
-                    address: "Parc La Fontaine"
+                    address: "Parc La Fontaine",
+                    latLng: [45.5253558,-73.5769621]
                 }, {
                     id: 1,
                     name: "Poutineville",
-                    address: "Rue Ontario"
+                    address: "Rue Ontario",
+                    latLng: [45.5253743,-73.583555]
                 }
             ],
-          selectedPlace: null,
+          selectedPlace: {
+              id: 0,
+              name: "La Banquise",
+              address: "Parc La Fontaine",
+              latLng: [45.5253558,-73.5769621]
+          },
+            // selectedPlace: null
         };
     }
 
@@ -62,6 +71,7 @@ class App extends React.Component {
 
                 <div className="bottom-right">
                     bottom right
+                    <PlaceDetailMap place={this.state.selectedPlace}/>
                 </div>
             </div>
 
