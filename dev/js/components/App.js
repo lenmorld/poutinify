@@ -1,5 +1,4 @@
 // like Layout that contains all of the other components
-
 import React from 'react';
 // import ReactDOM from 'react-dom';
 import '../../scss/style.scss';    // scss can be used by all
@@ -11,6 +10,10 @@ import Footer from './Footer';
 import PlaceList from './PlaceList';
 import PlaceDetailInfo from './PlaceDetailInfo';
 import PlaceDetailMap from './PlaceDetailMap';
+
+// AJAX
+import axios from 'axios';
+const YELP_API_KEY = "X08V7dIeiMyvpuAsQBmR-KVVt5u7mFfZafVNSUCY5a6JrqdVY5qT8tULeuN541vt2eLfg4pPdbT4nbRkKUP_d_wGRqYHymzcwdpN_zHkoYBq2DMpB8vjetidxBuNWXYx";
 
 class App extends React.Component {
 
@@ -43,8 +46,23 @@ class App extends React.Component {
     }
 
 
-    // TODO: ajax call to get poutine places
-    placesFetch() {
+    componentDidMount() {
+
+        // fetch places with an AJAX call using axios
+        axios.get(
+            'https://api.yelp.com/v3/businesses/search?location=Montreal&term=poutine',
+            {
+                headers: {'Authorization': "Bearer " + YELP_API_KEY},
+                crossDomain: true
+            })
+            .then(res => {
+               const businesses = res.businesses;
+
+               console.log("businesses", businesses);
+            }, err => {
+                console.log("error", err);
+            });
+
 
     }
 

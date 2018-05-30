@@ -8,7 +8,7 @@ const PlaceListItem = ({place, onPlaceSelect, isSelected}) => {
     return (
         <li onClick={() => onPlaceSelect(place)}>
             <div className={classNames}>
-                <h2>{place.name}</h2>
+                <div className="place-name">{place.name}</div>
                 <p>{place.address}</p>
             </div>
         </li>

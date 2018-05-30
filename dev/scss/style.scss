@@ -63,8 +63,12 @@ body {
 
 }
 
-h1, h2 {
+h1 {
 	color: $primary;
+}
+
+div.place-name {
+	font-size:	20px;
 }
 
 
@@ -208,6 +212,10 @@ footer {
 .place-list-item-selected {
 	border: 2px solid $gravy;
 	background-color: #86644f;
+
+	.place-name {
+		color: $light-cheese;
+	}
 }
 
 
