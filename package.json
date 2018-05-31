@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "webpack",
     "start": "webpack-dev-server",
-    "start-server": "node server.js"
+    "start-server": "webpack && node server.js"
   },
   "license": "ISC",
   "dependencies": {

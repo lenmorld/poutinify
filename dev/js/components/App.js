@@ -45,25 +45,32 @@ class App extends React.Component {
         };
     }
 
-
     componentDidMount() {
 
+        fetch('/yelp/places')
+            .then(res => res.json())
+            .then(places => {
+                // console.log("LENNY");
+                console.log("(backend->) places: ", {places});
+                // places: { business: [{id, alias, name, etc}, {}] }
+                this.setState( { places } );
+            } );
+
         // fetch places with an AJAX call using axios
-        axios.get(
-            'https://api.yelp.com/v3/businesses/search?location=Montreal&term=poutine',
-            {
-                headers: {'Authorization': "Bearer " + YELP_API_KEY},
-                crossDomain: true
-            })
-            .then(res => {
-               const businesses = res.businesses;
-
-               console.log("businesses", businesses);
-            }, err => {
-                console.log("error", err);
-            });
-
-
+        // ---> CORS
+        // axios.get(
+        //     'https://api.yelp.com/v3/businesses/search?location=Montreal&term=poutine',
+        //     {
+        //         headers: {'Authorization': "Bearer " + YELP_API_KEY},
+        //         crossDomain: true
+        //     })
+        //     .then(res => {
+        //        const businesses = res.businesses;
+        //
+        //        console.log("businesses", businesses);
+        //     }, err => {
+        //         console.log("error", err);
+        //     });
     }
 
   render() {
@@ -82,6 +89,7 @@ class App extends React.Component {
                 />
             </div>
 
+
             <div className="wrapper">
                 <div className="top-right">
                     <PlaceDetailInfo place={this.state.selectedPlace} />
@@ -93,10 +101,14 @@ class App extends React.Component {
                 </div>
             </div>
 
+            <h1>Places</h1>
+            {this.state.places.map(place =>
+                <div key={place.id}>{place.name}</div>)
+            }
+
           {/*<footer>*/}
             {/*<Footer />*/}
           {/*</footer>*/}
-
 
         </div>
     );

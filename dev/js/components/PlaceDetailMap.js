@@ -24,9 +24,9 @@ class PlaceDetailMap extends React.Component {
         // console.log("props", prevProps);
     }
 
-    static getDerivedStateFromProps(nextProps, prevState) {
+    // static getDerivedStateFromProps(nextProps, prevState) {
         // console.log(nextProps);
-    }
+    // }
 
     prepareMap(place) {
 
