@@ -20,29 +20,34 @@ class App extends React.Component {
     constructor(props) {
         super(props);
 
+        // this.state = {
+        //     // hard-coded for now
+        //     places: [
+        //         {
+        //             id: 0,
+        //             name: "La Banquise",
+        //             address: "Parc La Fontaine",
+        //             latLng: [45.5253558,-73.5769621]
+        //         }, {
+        //             id: 1,
+        //             name: "Poutineville",
+        //             address: "Rue Ontario",
+        //             latLng: [45.5253743,-73.583555]
+        //         }
+        //     ],
+        //   selectedPlace: {
+        //       id: 0,
+        //       name: "La Banquise",
+        //       address: "Parc La Fontaine",
+        //       latLng: [45.5253558,-73.5769621]
+        //   },
+        //     // selectedPlace: null
+        // };
+
         this.state = {
-            // hard-coded for now
-            places: [
-                {
-                    id: 0,
-                    name: "La Banquise",
-                    address: "Parc La Fontaine",
-                    latLng: [45.5253558,-73.5769621]
-                }, {
-                    id: 1,
-                    name: "Poutineville",
-                    address: "Rue Ontario",
-                    latLng: [45.5253743,-73.583555]
-                }
-            ],
-          selectedPlace: {
-              id: 0,
-              name: "La Banquise",
-              address: "Parc La Fontaine",
-              latLng: [45.5253558,-73.5769621]
-          },
-            // selectedPlace: null
-        };
+            places: [],
+            selectedPlace: {}
+        }
     }
 
     componentDidMount() {
@@ -53,7 +58,13 @@ class App extends React.Component {
                 // console.log("LENNY");
                 console.log("(backend->) places: ", {places});
                 // places: { business: [{id, alias, name, etc}, {}] }
-                this.setState( { places } );
+                this.setState(
+                    {
+                        places: places,
+                        selectedPlace: places[0]
+                    }
+                );
+                // select first one as default
             } );
 
         // fetch places with an AJAX call using axios

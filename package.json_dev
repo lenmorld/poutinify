@@ -1,0 +1,7 @@
+  "scripts": {
+    "dev": "webpack-dev-server --hot",
+    "start": "webpack && nodemon --watch src server.js",
+    "build": "rimraf src && webpack --progress --profile --colors",
+    "start-server": "nodemon --watch src server.js",
+    "start-client": "webpack-dev-server --hot"
+  },

@@ -10,10 +10,16 @@ const PlaceDetailInfo = ({place}) => {
 
     // TODO: image, comments, etc, other place details
 
+    if (!place.location) {
+        return (
+            <h1>Loading...</h1>
+        )
+    }
+
     return(
         <div className="place-detail-info">
             <h2>{place.name}</h2>
-            <h3>{place.address}</h3>
+            <h3>{place.location.address1}</h3>
         </div>
     )
 }

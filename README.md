@@ -19,27 +19,32 @@ side-top-bottom
 
 TODO:
 
-1. make a node server, so that the yelp request
+[/] make a node server, so that the yelp request
 is not blocked because of CORS
 
-
+[ ] fix webpack + node/nodemon to have both
+reflect React and Node changes
 
 
 NOTES on webpack + node
 
-"start-server": "webpack && node server.js"
+>>> "start-server": "webpack && node server.js"
 
 -> this starts server but only serves the current "snapshot" build of the
 src folder
+-> have to be restarted to reflect changes
+
 -> this is good for final build (PRODUCTION MODE)
 
-"start": "webpack-dev-server"
+>>> "start": "webpack-dev-server"
 
 -> this watches files for webpack frontend compiles, but the one served by node
 is not updated
 
 
-SOLUTION:
+
+SOLUTION:  FAILED MISERABLY, reverted to old one
+
 for DEV mode, have 2 processes running
 
 $ npm run dev       # "webpack-dev-server --hot"

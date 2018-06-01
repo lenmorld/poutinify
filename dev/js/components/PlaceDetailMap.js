@@ -18,33 +18,63 @@ class PlaceDetailMap extends React.Component {
     }
 
     // similar to componentDidMount() but for updates
-    componentDidUpdate(prevProps, prevState, snapshot) {
+    // componentDidUpdate(prevProps, prevState, snapshot) {
         // console.log("update of state", prevState);
 
         // console.log("props", prevProps);
-    }
+    // }
 
     // static getDerivedStateFromProps(nextProps, prevState) {
         // console.log(nextProps);
     // }
 
     prepareMap(place) {
+        //
+        if (place.coordinates) {
+            // console.log("MAP place:", place);
 
-        const map_type = 'mapbox.streets';  // 'mapbox.satellite'
-        const mapbox_access_token = "pk.eyJ1IjoibGVubW9ybGQiLCJhIjoiY2ozcDVkMG4xMDBwYTJ3bjQ3djFvcXVhcSJ9.x7QMt0rLTQfX38XfTdxRTA";
+            const latLng = [place.coordinates.latitude, place.coordinates.longitude];
 
-        // const mymap = L.map('mapid');
+            const map_type = 'mapbox.streets';  // 'mapbox.satellite'
+            const mapbox_access_token = "pk.eyJ1IjoibGVubW9ybGQiLCJhIjoiY2ozcDVkMG4xMDBwYTJ3bjQ3djFvcXVhcSJ9.x7QMt0rLTQfX38XfTdxRTA";
 
-        mymap.setView(place.latLng, 13);
-        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-            '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            maxZoom: 18,
-            id: map_type,
-            accessToken: mapbox_access_token
-        }).addTo(mymap);
+            // const mymap = L.map('mapid');
 
-        const marker = L.marker(place.latLng).addTo(mymap);
+            mymap.setView(latLng, 13);
+            L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+                '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                maxZoom: 18,
+                id: map_type,
+                accessToken: mapbox_access_token
+            }).addTo(mymap);
+
+            // const marker = L.marker(place.latLng).addTo(mymap);
+
+            // yelp business coords objects
+            const marker = L.marker(latLng).addTo(mymap);
+        }
+        //
+        // console.log("place:", place);
+        //
+        // const map_type = 'mapbox.streets';  // 'mapbox.satellite'
+        // const mapbox_access_token = "pk.eyJ1IjoibGVubW9ybGQiLCJhIjoiY2ozcDVkMG4xMDBwYTJ3bjQ3djFvcXVhcSJ9.x7QMt0rLTQfX38XfTdxRTA";
+        //
+        // // const mymap = L.map('mapid');
+        //
+        // mymap.setView(place.coordinates, 13);
+        // L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+        //     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+        //     '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        //     maxZoom: 18,
+        //     id: map_type,
+        //     accessToken: mapbox_access_token
+        // }).addTo(mymap);
+        //
+        // // const marker = L.marker(place.latLng).addTo(mymap);
+        //
+        // // yelp business coords objects
+        // const marker = L.marker(place.coordinates).addTo(mymap);
     }
 
 
