@@ -7,7 +7,7 @@ let cors = require('cors');
 
 let DIST_DIR = path.join(__dirname, "src");
 
-let port = 8080;
+let port = 8081;
 
 app.use(cors());
 app.use(bodyParser.json());

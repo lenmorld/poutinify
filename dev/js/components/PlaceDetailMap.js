@@ -35,13 +35,18 @@ class PlaceDetailMap extends React.Component {
 
             const latLng = [place.coordinates.latitude, place.coordinates.longitude];
 
-            const map_type = 'mapbox.streets';  // 'mapbox.satellite'
+            const map_type = 'mapbox.dark';  // ''mapbox.streets', mapbox.satellite'
             const mapbox_access_token = "pk.eyJ1IjoibGVubW9ybGQiLCJhIjoiY2ozcDVkMG4xMDBwYTJ3bjQ3djFvcXVhcSJ9.x7QMt0rLTQfX38XfTdxRTA";
 
             // const mymap = L.map('mapid');
 
             mymap.setView(latLng, 13);
-            L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+
+            const map_style = 'https://api.mapbox.com/styles/v1/lenmorld/cji7qigek10y52ro19byoibog/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGVubW9ybGQiLCJhIjoiY2ozcDVkMG4xMDBwYTJ3bjQ3djFvcXVhcSJ9.x7QMt0rLTQfX38XfTdxRTA';
+
+            const old_map_style = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}';
+
+            L.tileLayer(map_style, {
                 attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
                 '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
                 maxZoom: 18,

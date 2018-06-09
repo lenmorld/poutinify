@@ -50,3 +50,23 @@ for DEV mode, have 2 processes running
 $ npm run dev       # "webpack-dev-server --hot"
 
 $ npm run start-server    # "nodemon"
+
+
+
+
+HEROKU
+
+  232  heroku login
+  234  git push heroku master
+  235  heroku ps:scale web=1
+  236  heroku open
+  237  heroku logs --tail
+  238  heroku ps:scale web=2
+  239  heroku local web
+  240  git add .
+  242  git commit -m "heroku"
+  243  git push origin master
+  244  git push heroku master
+  245  heroku open
+  246  heroku logs -t
+  247  heroku restart
