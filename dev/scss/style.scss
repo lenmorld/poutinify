@@ -84,6 +84,14 @@ header {
 	padding: 5px;
 	margin: 0;
 
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+
+	h1 {
+	}
+
 	//position: fixed;
 	//top:0;
 	//left:0;
@@ -95,6 +103,16 @@ header {
 		width: 100%;
 		position: relative;
 	}
+
+	.header-links {
+		ul li {
+			display: inline;
+			padding: 0 20px;
+		}
+	}
+
+
+
 }
 
 .wrapper {
@@ -140,7 +158,7 @@ header {
 
 .top-right, .bottom-right{
 	@include padding;
-	
+
 	position: fixed;
 	left: 30%;
 	right: 0;

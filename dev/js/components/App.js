@@ -4,7 +4,7 @@ import React from 'react';
 import '../../scss/style.scss';    // scss can be used by all
 
 // sub-components
-import Header from './Header';
+// import Header from './Header';
 import Footer from './Footer';
 
 import PlaceList from './PlaceList';
@@ -87,9 +87,9 @@ class App extends React.Component {
   render() {
     return(
         <div>
-          <header>
+          {/*<header>
             <Header />
-          </header>
+          </header>*/}
 
             <div className="left">
                 <h3>poutine places</h3>
