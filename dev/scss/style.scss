@@ -219,12 +219,32 @@ footer {
 
 }
 
-.place-list-item, place-detail-info {
+.place-list-item, .place-detail-info {
 	background-color: #e69500;
 	border: 2px dashed $gravy;
 	color: $gravy;
 	margin: 10px auto;
 	width: 90%;
+}
+
+.place-detail-info-container {
+	display: flex;
+	justify-content: flex-start;
+	align-items: stretch;
+
+	img {
+		width: 25%;
+		height: 200px;
+		margin: 10px;
+	}
+
+	.rating {
+		margin: 20px;
+
+		.checked {
+			color: orange;
+		}
+	}
 }
 
 .place-list-item-selected {
