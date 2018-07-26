@@ -3,6 +3,8 @@
 [ ] show top comment (or show a comment iterator, by querying place details)
     -> can also have a gallery of pictures
 
+- [/] fetch Business details -> get photos data (3 photos)
+- [ ] fetch Reviews -> get review data
 
 [ ]
 

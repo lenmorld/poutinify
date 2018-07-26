@@ -21,7 +21,7 @@ router.get('/places', function (req, res, next) {
     request.get(options, function (error, response) {
 
         const body = response.body;
-        console.log(body);
+        // console.log(body);
 
         // body.businesses = []
 
@@ -30,6 +30,47 @@ router.get('/places', function (req, res, next) {
         // callback(response.body);
     });
 });
+
+router.get('/places/:id', function (req, res, next) {
+    // use the token to access the Yelp API
+    console.log("fetchings business: ", req.params.id);
+    var options = {
+        url: `https://api.yelp.com/v3/businesses/${req.params.id}`,
+        headers: {
+            'Authorization': 'Bearer ' + YELP_API_KEY
+        },
+        json: true
+    };
+
+    request.get(options, function (error, response) {
+        const body = response.body;
+        res.json(body);
+        // callback(response.body);
+    });
+});
+
+
+//  GET https://api.yelp.com/v3/businesses/{id}/reviews
+
+router.get('/reviews/:id', function (req, res, next) {
+    // use the token to access the Yelp API
+    console.log("fetching reviews: ", req.params.id);
+    var options = {
+        url: `https://api.yelp.com/v3/businesses/${req.params.id}/reviews`,
+        headers: {
+            'Authorization': 'Bearer ' + YELP_API_KEY
+        },
+        json: true
+    };
+
+    request.get(options, function (error, response) {
+        const body = response.body;
+        res.json(body.reviews);
+        // callback(response.body);
+    });
+});
+
+
 
 
 // fetch places with an AJAX call using axios
