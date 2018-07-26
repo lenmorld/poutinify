@@ -1,10 +1,18 @@
 [/] add place detail, such as image and rating stars
 
-[ ] show top comment (or show a comment iterator, by querying place details)
+[/] show top comment (or show a comment iterator, by querying place details)
     -> can also have a gallery of pictures
 
 - [/] fetch Business details -> get photos data (3 photos)
-- [ ] fetch Reviews -> get review data
+- [/] fetch Reviews -> get review data
+
+
+[ ] show gallery of Reviews
+[ ] show gallery of pictures
+
+--> general gallery? use for both Reviews and Pictures
+
+[ ] secure yelp_api key by putting it in .env (using EnvJS) or in Linux env
 
 [ ]
 

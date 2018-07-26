@@ -4,9 +4,8 @@ import PlaceListItem from './PlaceListItem';
 
 const PlaceList = (props) => {
 
-    const places = props.places;
+    const { places } = props;
 
-    // replace with props.places when AJAX ready
     const placeListItems = places.map((place) => {
        return (
            <PlaceListItem

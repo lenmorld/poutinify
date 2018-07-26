@@ -1,34 +1,20 @@
 import React from 'react';
 
-// global var for map (sorry, no choice)
+// global var for map - since 3rd party Mapbox Leaflet
 let mymap = null;
 
 // const PlaceDetailMap = (props) => {
 
 class PlaceDetailMap extends React.Component {
 
-
     constructor(props) {
-        console.log(props);
         super(props);
 
         this.markers = [];
-
         this.state = {
             place: props.place,
         }
     }
-
-    // similar to componentDidMount() but for updates
-    // componentDidUpdate(prevProps, prevState, snapshot) {
-        // console.log("update of state", prevState);
-
-        // console.log("props", prevProps);
-    // }
-
-    // static getDerivedStateFromProps(nextProps, prevState) {
-        // console.log(nextProps);
-    // }
 
     prepareMap(place) {
         //
@@ -72,12 +58,13 @@ class PlaceDetailMap extends React.Component {
     }
 
 
-    // must place here since it requires #mapid to be rendered already to insert map things
-    // only called on first
+
+    /**
+      only called on first mount, not on updates
+      must place here since it requires #mapid to be rendered already to insert map things
+    */
+
     componentDidMount() {
-
-        // never called on updates
-
         console.log("componentDidMount", this.props);
 
         // prepare map
@@ -87,27 +74,20 @@ class PlaceDetailMap extends React.Component {
         this.prepareMap(this.state.place);
     }
 
+    /* called on every update
+      i.e. when clicking a PlaceListItem -> update map
+    */
     componentDidUpdate(prevProps, prevState, snapshot) {
-        console.log("componentDidUpdate", this.props);
+        console.log(">>> componentDidUpdate", this.props);
         this.prepareMap(this.props.place);
     }
 
     render() {
-        // console.log("render", this.props.place);
-
-        // TODO: how to invoke componentDidMount with new props
-
         return (
             <div id="mapid">
             </div>
         )
     }
 }
-
-
-
-
-// }
-
 
 export default PlaceDetailMap;
