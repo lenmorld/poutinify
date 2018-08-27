@@ -1,9 +1,9 @@
-# TODO: fix dev to only one server
-
 to start backend and frontend
-- backend node-express serves React files
-- React is in src folder
-- built by webpack before being served by node
+
+backend node-express serves React files
+
+ React is in src folder
+built by webpack before being served by node
 
 npm run start-server        # starts node server that serves compiled files
 npm start       # starts webpack and watches file changes
@@ -52,7 +52,6 @@ for DEV mode, have 2 processes running
 $ npm run dev       # "webpack-dev-server --hot"
 
 $ npm run start-server    # "nodemon"
-
 
 
 
