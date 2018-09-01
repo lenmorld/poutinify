@@ -1,34 +1,30 @@
-var debug = process.env.NODE_ENV !== "production";
-var path = require('path');
-var webpack = require('webpack');
+const path = require('path');
 
 module.exports = {
-    devServer: {
-        inline: true,
-        contentBase: './src',
-        port: 3004
-    },
-    devtool: 'cheap-module-eval-source-map',
-    entry: './dev/js/index.js',
-    module: {
-        loaders: [
-            {
-                test: /\.js$/,
-                loaders: ['babel'],
-                exclude: /node_modules/
-            },
-            {
-                test: /\.scss/,
-                loader: 'style-loader!css-loader!sass-loader'
-            }
-        ]
-    },
-    output: {
-        path: 'src',
-        filename: 'js/bundle.min.js'
-    },
-    plugins: debug ? [] :  [
-        new webpack.optimize.OccurrenceOrderPlugin(),
-        new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
-    ]
+  mode: 'development',
+  context: path.join(__dirname, './'),
+  entry: './dev/js/index.js',
+  output: {
+    path: path.join(__dirname, 'src'),
+    filename: 'bundle.js',
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
+  module: {
+    rules: [
+      {
+        test: /\.jsx?$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+        options: {
+          presets: ["es2015", "react"]
+        }
+      },
+      {
+        test: /\.scss/,
+        use: ['style-loader', 'css-loader', 'sass-loader']
+      }
+    ],
+  },
 };
