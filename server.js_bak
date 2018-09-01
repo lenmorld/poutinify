@@ -7,7 +7,7 @@ let cors = require('cors');
 
 let DIST_DIR = path.join(__dirname, "src");
 
-let server_port = process.env.PORT || 3003;
+let port = 8081;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -27,6 +27,6 @@ app.get("/", function (req, res) {
 
 app.use('/yelp', require('./api/yelp'));
 
-app.listen(server_port, function () {
-    console.log("Node-express server is running at ", server_port);
+app.listen(port, function () {
+    console.log("Node-express server is running at ", port);
 });

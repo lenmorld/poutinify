@@ -1,51 +1,45 @@
 {
-  "name": "react-redux-template",
+  "name": "fullstack0",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "``` $ npm init $ npm install express --save $ npm start ```",
+  "main": "server.js",
   "scripts": {
-    "dev": "webpack",
-    "start": "webpack-dev-server",
-    "start-server": "webpack && node server.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch-build": "webpack --watch",
+    "watch-server": "nodemon server.js",
+    "start": "npm-run-all --parallel watch-server watch-build"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lenmorld/react_node_workshop.git"
+  },
+  "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lenmorld/react_node_workshop/issues"
+  },
+  "homepage": "https://github.com/lenmorld/react_node_workshop#readme",
   "dependencies": {
-    "axios": "^0.18.0",
-    "babel-core": "^6.10.4",
-    "babel-loader": "^6.2.4",
-    "babel-polyfill": "^6.9.1",
-    "babel-preset-es2015": "^6.9.0",
-    "babel-preset-react": "^6.11.1",
-    "babel-register": "^6.9.0",
+    "babel-preset-es2015": "^6.24.1",
     "body-parser": "^1.18.3",
     "cors": "^2.8.4",
-    "cross-env": "^1.0.8",
-    "css-loader": "^0.23.1",
-    "expect": "^1.20.1",
     "express": "^4.16.3",
-    "node-libs-browser": "^1.0.0",
-    "node-sass": "^3.8.0",
-    "path": "^0.12.7",
-    "react": "16.3.2",
-    "react-addons-test-utils": "^15.1.0",
-    "react-dom": "16.3.2",
-    "react-redux": "5.0.7",
-    "react-router": "^2.0.1",
+    "node-sass": "^4.9.3",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
     "react-router-dom": "^4.3.1",
-    "redux": "^3.5.2",
-    "redux-logger": "^2.6.1",
-    "redux-promise": "^0.5.3",
-    "redux-thunk": "^2.1.0",
-    "sass-loader": "^4.0.0",
-    "style-loader": "^0.13.1",
-    "url": "^0.11.0",
-    "webpack": "^1.13.1",
-    "webpack-dev-middleware": "^1.6.1",
-    "webpack-dev-server": "^1.14.1",
-    "webpack-hot-middleware": "^2.11.0"
+    "request": "^2.88.0",
+    "sass-loader": "^7.1.0"
   },
   "devDependencies": {
-    "babel-plugin-react-transform": "^2.0.2",
-    "babel-preset-stage-0": "^6.5.0",
-    "react-transform-hmr": "^1.0.4"
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^1.0.0",
+    "style-loader": "^0.22.1",
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0"
   }
 }

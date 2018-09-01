@@ -12,7 +12,7 @@ import PlaceDetailInfo from './PlaceDetailInfo';
 import PlaceDetailMap from './PlaceDetailMap';
 
 // AJAX
-import axios from 'axios';
+// import axios from 'axios';
 const YELP_API_KEY = "X08V7dIeiMyvpuAsQBmR-KVVt5u7mFfZafVNSUCY5a6JrqdVY5qT8tULeuN541vt2eLfg4pPdbT4nbRkKUP_d_wGRqYHymzcwdpN_zHkoYBq2DMpB8vjetidxBuNWXYx";
 
 class App extends React.Component {
