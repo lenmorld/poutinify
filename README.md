@@ -1,6 +1,6 @@
 ### Preview
 
-![poutinify v1](https://raw.githubusercontent.com/lenmorld/poutinify/master/screens/screen1.png)
+![poutinify v1](https://raw.githubusercontent.com/lenmorld/poutinify/master/screens/screen1.jpg)
 
 
 ### Tech used
