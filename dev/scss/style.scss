@@ -106,6 +106,15 @@ header {
 		ul li {
 			display: inline;
 			padding: 0 20px;
+
+			a {
+				color: orange;
+				text-decoration: none;
+
+				&:hover {
+					color: white;
+				}
+			}
 		}
 	}
 
