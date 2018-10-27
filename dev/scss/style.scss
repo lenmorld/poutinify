@@ -69,6 +69,7 @@ h1 {
 
 div.place-name {
 	font-size:	20px;
+	cursor: pointer;
 }
 
 
@@ -221,10 +222,6 @@ header {
 
 }
 
-footer {
-
-}
-
 .place-list-item, .place-detail-info {
 	background-color: #e69500;
 	border: 2px dashed $gravy;
@@ -243,10 +240,6 @@ footer {
 		width: 75px;
 		height: 75px;
 		margin: 5px;
-	}
-
-	div.name {
-
 	}
 }
 
