@@ -89,10 +89,6 @@ header {
 	justify-content: space-between;
 	align-items: center;
 
-
-	h1 {
-	}
-
 	//position: fixed;
 	//top:0;
 	//left:0;
@@ -113,7 +109,12 @@ header {
 	}
 
 	.powered_by {
-		color: white;
+		span {
+			display: inline-block;
+			position: absolute;
+    		padding-top: 10px;
+			color: white;
+		}
 	}
 	.yelp_logo {
 		height: 100px;

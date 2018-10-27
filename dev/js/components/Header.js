@@ -11,16 +11,18 @@ class Header extends React.Component {
     return(
       <header>
         <h1>Poutinify</h1>
-        <div>
-          <span class="powered_by">Powered by</span>
-          <img class="yelp_logo" src="./images/Yelp_trademark_RGB.png" alt="powered by Yelp" />
-        </div>
         <div className="header-links">
           <ul>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/about">About</Link></li>
             <li><Link to="/contact">Contact</Link></li>
           </ul>
+        </div>
+        <div class="powered_by">
+          <span>Powered by</span>
+          <img class="yelp_logo" 
+               src="./images/Yelp_trademark_RGB.png" 
+               alt="powered by Yelp" />
         </div>
       </header>
     );
