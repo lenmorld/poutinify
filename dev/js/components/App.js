@@ -11,10 +11,6 @@ import PlaceList from './PlaceList';
 import PlaceDetailInfo from './PlaceDetailInfo';
 import PlaceDetailMap from './PlaceDetailMap';
 
-// AJAX
-// import axios from 'axios';
-const YELP_API_KEY = "X08V7dIeiMyvpuAsQBmR-KVVt5u7mFfZafVNSUCY5a6JrqdVY5qT8tULeuN541vt2eLfg4pPdbT4nbRkKUP_d_wGRqYHymzcwdpN_zHkoYBq2DMpB8vjetidxBuNWXYx";
-
 class App extends React.Component {
 
     constructor(props) {
@@ -30,7 +26,7 @@ class App extends React.Component {
             .then(res => res.json())
             .then(places => {
                 // console.log("LENNY");
-                console.log("(backend->) places: ", {places});
+                console.log("(backend->) places: ", { places });
                 // places: { business: [{id, alias, name, etc}, {}] }
                 this.setState(
                     {
@@ -39,48 +35,48 @@ class App extends React.Component {
                     }
                 );
                 // select first one as default
-            } );
+            });
     }
 
-  render() {
-    return(
-        <div>
-          {/*<header>
+    render() {
+        return (
+            <div>
+                {/*<header>
             <Header />
           </header>*/}
 
-            <div className="left">
-                <h3>poutine places</h3>
-                <PlaceList
-                    places={this.state.places}
-                    onPlaceSelect={selectedPlace => this.setState({selectedPlace})}
-                    selectedPlace={this.state.selectedPlace}
-                />
-            </div>
-
-            <div className="wrapper">
-                <div className="top-right">
-                    <PlaceDetailInfo place={this.state.selectedPlace} />
+                <div className="left">
+                    <h3>poutine places</h3>
+                    <PlaceList
+                        places={this.state.places}
+                        onPlaceSelect={selectedPlace => this.setState({ selectedPlace })}
+                        selectedPlace={this.state.selectedPlace}
+                    />
                 </div>
 
-                <div className="bottom-right">
-                    bottom right
-                    <PlaceDetailMap place={this.state.selectedPlace}/>
+                <div className="wrapper">
+                    <div className="top-right">
+                        <PlaceDetailInfo place={this.state.selectedPlace} />
+                    </div>
+
+                    <div className="bottom-right">
+                        bottom right
+                    <PlaceDetailMap place={this.state.selectedPlace} />
+                    </div>
                 </div>
+
+                <h1>Places</h1>
+                {this.state.places.map(place =>
+                    <div key={place.id}>{place.name}</div>)
+                }
+
+                {/*<footer>*/}
+                {/*<Footer />*/}
+                {/*</footer>*/}
+
             </div>
-
-            <h1>Places</h1>
-            {this.state.places.map(place =>
-                <div key={place.id}>{place.name}</div>)
-            }
-
-          {/*<footer>*/}
-            {/*<Footer />*/}
-          {/*</footer>*/}
-
-        </div>
-    );
-  }
+        );
+    }
 }
 
 
