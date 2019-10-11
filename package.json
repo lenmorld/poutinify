@@ -1,5 +1,5 @@
 {
-  "name": "fullstack0",
+  "name": "poutinify",
   "version": "1.0.0",
   "description": "``` $ npm init $ npm install express --save $ npm start ```",
   "main": "server.js",

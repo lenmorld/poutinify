@@ -24,4 +24,8 @@
   currently set to Dark theme
   https://www.mapbox.com/studio/styles/lenmorld/cji7qigek10y52ro19byoibog/
 
-[ ]
+[ ] convert the data fetching to Hooks / Lazy Loading
+
+[ ] cache Yelp data
+
+[ ] update to Reach router
