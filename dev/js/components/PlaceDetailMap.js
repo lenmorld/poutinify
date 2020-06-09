@@ -3,8 +3,6 @@ import React from 'react';
 // global var for map - since 3rd party Mapbox Leaflet
 let mymap = null;
 
-// const PlaceDetailMap = (props) => {
-
 class PlaceDetailMap extends React.Component {
 
     constructor(props) {
@@ -17,9 +15,8 @@ class PlaceDetailMap extends React.Component {
     }
 
     prepareMap(place) {
-        //
         if (place.coordinates) {
-          console.log(place.coordinates);
+            console.log(place.coordinates);
             // console.log("MAP place:", place);
 
             const latLng = [place.coordinates.latitude, place.coordinates.longitude];
@@ -35,7 +32,7 @@ class PlaceDetailMap extends React.Component {
 
             L.tileLayer(map_style, {
                 attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-                '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                    '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
                 maxZoom: 18,
                 id: map_type,
                 accessToken: mapbox_access_token
@@ -49,14 +46,13 @@ class PlaceDetailMap extends React.Component {
 
             // remove other markers, place the one currently selected
             this.markers.forEach(m => {
-              if (m._latlng.lat === place.coordinates.latitude)
-                  m.addTo(mymap);
-              else
-                  m.remove();
+                if (m._latlng.lat === place.coordinates.latitude)
+                    m.addTo(mymap);
+                else
+                    m.remove();
             });
         }
     }
-
 
 
     /**
@@ -77,9 +73,12 @@ class PlaceDetailMap extends React.Component {
     /* called on every update
       i.e. when clicking a PlaceListItem -> update map
     */
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        console.log(">>> componentDidUpdate", this.props);
-        this.prepareMap(this.props.place);
+    componentDidUpdate(prevProps) {
+        // only do update when not similar to current place
+        if (prevProps.place.id !== this.props.place.id) {
+            console.log(">>> componentDidUpdate", this.props.place);
+            this.prepareMap(this.props.place);
+        }
     }
 
     render() {

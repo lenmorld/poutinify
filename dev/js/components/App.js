@@ -1,11 +1,8 @@
 // like Layout that contains all of the other components
 import React from 'react';
-// import ReactDOM from 'react-dom';
 import '../../scss/style.scss';    // scss can be used by all
 
-// sub-components
-// import Header from './Header';
-import Footer from './Footer';
+import storage from '../helpers/storage'
 
 import PlaceList from './PlaceList';
 import PlaceDetailInfo from './PlaceDetailInfo';
@@ -21,30 +18,39 @@ class App extends React.Component {
         }
     }
 
+    updatePlaces(places) {
+        console.log("### 🤩 cached places ###")
+        // console.log("LENNY");
+        console.log("(backend->) places: ", { places });
+        // places: { business: [{id, alias, name, etc}, {}] }
+        this.setState(
+            {
+                places: places,
+                selectedPlace: places[0]
+            }
+        );
+        // select first one as default
+    }
+
     componentDidMount() {
-        fetch('/yelp/places')
-            .then(res => res.json())
-            .then(places => {
-                // console.log("LENNY");
-                console.log("(backend->) places: ", { places });
-                // places: { business: [{id, alias, name, etc}, {}] }
-                this.setState(
-                    {
-                        places: places,
-                        selectedPlace: places[0]
-                    }
-                );
-                // select first one as default
-            });
+        const savedPlaces = storage.get('places')
+
+        if (savedPlaces) {
+            debugger;
+            this.updatePlaces(savedPlaces)
+        } else {
+            fetch('/yelp/places')
+                .then(res => res.json())
+                .then(places => {
+                    storage.set('places', places)
+                    this.updatePlaces(places)
+                });
+        }
     }
 
     render() {
         return (
             <div>
-                {/*<header>
-            <Header />
-          </header>*/}
-
                 <div className="left">
                     <h3>poutine places</h3>
                     <PlaceList
@@ -65,29 +71,14 @@ class App extends React.Component {
                     </div>
                 </div>
 
-                <h1>Places</h1>
+                {/* <h1>Places</h1>
                 {this.state.places.map(place =>
                     <div key={place.id}>{place.name}</div>)
-                }
-
-                {/*<footer>*/}
-                {/*<Footer />*/}
-                {/*</footer>*/}
-
+                } */}
             </div>
         );
     }
 }
 
 
-// pure function - no lifecycle stuff, whatsoever
-// const App = () => (
-//   <div>
-//     <h1>Poutinify 12</h1>
-//   </div>
-// );
-//
-
-
-// export works similarly for Class or pure function
 export default App;

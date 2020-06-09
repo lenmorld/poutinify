@@ -2,6 +2,8 @@ import React from 'react';
 
 import Reviews from './Reviews';
 
+import storage from '../helpers/storage'
+
 class PlaceDetailInfo extends React.Component {
 
   constructor(props) {
@@ -15,7 +17,7 @@ class PlaceDetailInfo extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     // compare id is needed so it wouldn't run every second
-    if(this.props.place.id && this.props.place.id !== prevProps.place.id) {
+    if (this.props.place.id && this.props.place.id !== prevProps.place.id) {
       // get place details, incl:
       /*
       3 top photos
@@ -25,27 +27,56 @@ class PlaceDetailInfo extends React.Component {
       */
 
       // console.log("fetch: ", `/yelp/places/${this.props.place.id}`);
-      fetch(`/yelp/places/${this.props.place.id}`)
-      .then(res => res.json())
-      .then(placeDetails => {
-        // debugger;
-        // console.log("(backend->) placeDetails: ", {placeDetails});
-        this.setState(
-          {
-            placeDetails: placeDetails,
-          }
-        );
-      } );
+      const placeId = this.props.place.id;
+      const savedPlaceDetails = storage.get(`place_${placeId}`);
 
-      fetch(`/yelp/reviews/${this.props.place.id}`)
-      .then(res => res.json())
-      .then(reviews => {
+      if (savedPlaceDetails) {
+        console.log("### 🤩 cached place details ###")
         this.setState(
           {
-            reviews: reviews,
+            placeDetails: savedPlaceDetails,
           }
         );
-      } );
+      } else {
+        fetch(`/yelp/places/${placeId}`)
+          .then(res => res.json())
+          .then(placeDetails => {
+            // debugger;
+            // console.log("(backend->) placeDetails: ", {placeDetails});
+
+            storage.set(`place_${placeId}`, placeDetails)
+
+            this.setState(
+              {
+                placeDetails: placeDetails,
+              }
+            );
+          });
+      }
+
+      const savedPlaceReviews = storage.get(`reviews_${placeId}`);
+
+      if (savedPlaceReviews) {
+        console.log("### 🤩 cached reviews ###")
+        this.setState(
+          {
+            reviews: savedPlaceReviews,
+          }
+        );
+      } else {
+        fetch(`/yelp/reviews/${placeId}`)
+          .then(res => res.json())
+          .then(reviews => {
+
+            storage.set(`reviews_${placeId}`, reviews)
+
+            this.setState(
+              {
+                reviews: reviews,
+              }
+            );
+          });
+      }
     }
   }
 
@@ -55,7 +86,7 @@ class PlaceDetailInfo extends React.Component {
 
   intToList(x) {
     const a = [];
-    for(var i = 0; i < x; i++) {
+    for (var i = 0; i < x; i++) {
       a.push(i);
     }
     return a;
@@ -78,42 +109,42 @@ class PlaceDetailInfo extends React.Component {
       )
     }
 
-    return(
+    return (
       <div className="place-detail-info" >
         <h2>{place.name}</h2>
         <h3>{place.location.address1}</h3>
 
         <div className="place-rating">
           {
-            this.intToList(Math.floor(place.rating)).map((e,i) => {
+            this.intToList(Math.floor(place.rating)).map((e, i) => {
               return <span
                 key={`${place.id}_starred_${i}`}
                 className="fa fa-star checked"></span>;
-              })
-            }
-            {
-              this.intToList(5 - Math.floor(place.rating)).map((e,i) => {
-                return <span
-                  key={`${place.id}_unstarred_${i}`}
-                  className="fa fa-star"></span>;
-                })
-              }
-            </div>
+            })
+          }
+          {
+            this.intToList(5 - Math.floor(place.rating)).map((e, i) => {
+              return <span
+                key={`${place.id}_unstarred_${i}`}
+                className="fa fa-star"></span>;
+            })
+          }
+        </div>
 
-            <div className="place-detail-info-container">
-              <img
-                className="place-image"
-                src={place.image_url}
-                alt={place.name} />
+        <div className="place-detail-info-container">
+          <img
+            className="place-image"
+            src={place.image_url}
+            alt={place.name} />
 
-              <Reviews reviews={this.state.reviews} />
-            </div>
+          <Reviews reviews={this.state.reviews} />
+        </div>
 
 
 
-          </div>
-        )
-      }
-    }
+      </div>
+    )
+  }
+}
 
-    export default PlaceDetailInfo;
+export default PlaceDetailInfo;
