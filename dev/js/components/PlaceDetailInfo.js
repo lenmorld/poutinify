@@ -131,7 +131,7 @@ class PlaceDetailInfo extends React.Component {
           }
         </div>
 
-        <div className="place-detail-info-container">
+        <div className="detail-body">
           <img
             className="place-image"
             src={place.image_url}

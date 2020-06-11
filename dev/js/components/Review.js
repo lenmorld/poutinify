@@ -1,6 +1,6 @@
 import React from 'react';
 
-import User from './User';``
+import User from './User'; ``
 
 const Review = (props) => {
 
@@ -9,11 +9,10 @@ const Review = (props) => {
   return (
     <div>
       <div className="review">
+        <User user={review.user} />
         <div className="text">
           {review.text}
         </div>
-
-        <User user={review.user}/>
       </div>
 
       <div className="review-extras">

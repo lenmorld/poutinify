@@ -50,9 +50,9 @@ class App extends React.Component {
 
     render() {
         return (
-            <div>
+            <main>
                 <div className="left">
-                    <h3>poutine places</h3>
+                    {/* <h3>poutine places</h3> */}
                     <PlaceList
                         places={this.state.places}
                         onPlaceSelect={selectedPlace => this.setState({ selectedPlace })}
@@ -60,14 +60,14 @@ class App extends React.Component {
                     />
                 </div>
 
-                <div className="wrapper">
+                <div className="right-wrapper">
                     <div className="top-right">
                         <PlaceDetailInfo place={this.state.selectedPlace} />
                     </div>
 
                     <div className="bottom-right">
-                        bottom right
-                    <PlaceDetailMap place={this.state.selectedPlace} />
+                        <h3>Where is it?</h3>
+                        <PlaceDetailMap place={this.state.selectedPlace} />
                     </div>
                 </div>
 
@@ -75,7 +75,7 @@ class App extends React.Component {
                 {this.state.places.map(place =>
                     <div key={place.id}>{place.name}</div>)
                 } */}
-            </div>
+            </main>
         );
     }
 }

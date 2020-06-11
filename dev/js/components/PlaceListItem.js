@@ -1,18 +1,16 @@
 import React from 'react';
 
-const PlaceListItem = ({place, onPlaceSelect, isSelected}) => {
+const PlaceListItem = ({ place, onPlaceSelect, isSelected }) => {
 
-    const selectedClassName = isSelected ? "place-list-item-selected" : "";
-    let classNames = `${selectedClassName} place-list-item`;
+    let classNames = `place-list-item ${isSelected ? "selected" : ""}`;
 
     return (
-        <li onClick={() => onPlaceSelect(place)}>
+        <li key={place.id} onClick={() => onPlaceSelect(place)}>
             <div className={classNames}>
                 <div className="place-name">{place.name}</div>
-                <p>{place.address}</p>
+                {/* <p>{place.address}</p> */}
             </div>
         </li>
-
     );
 }
 

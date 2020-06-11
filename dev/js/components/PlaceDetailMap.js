@@ -83,7 +83,7 @@ class PlaceDetailMap extends React.Component {
 
     render() {
         return (
-            <div id="mapid">
+            <div id="mapid" style={{ height: '500px' }}>
             </div>
         )
     }

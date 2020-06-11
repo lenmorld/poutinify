@@ -7,22 +7,20 @@ const PlaceList = (props) => {
     const { places } = props;
 
     const placeListItems = places.map((place) => {
-       return (
-           <PlaceListItem
+        return (
+            <PlaceListItem
                 place={place}
                 onPlaceSelect={props.onPlaceSelect}
                 key={place.id}
                 isSelected={props.selectedPlace && (props.selectedPlace.id === place.id)}
-           />
-       )
+            />
+        )
     });
 
     return (
-        <div>
-            <ul>
-                {placeListItems}
-            </ul>
-        </div>
+        <ul className="place-list">
+            {placeListItems}
+        </ul>
     )
 
 }

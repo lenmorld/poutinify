@@ -3,11 +3,10 @@ let path = require("path");
 let app = express();
 let bodyParser = require('body-parser');
 let cors = require('cors');
-// let DIST_DIR = path.join(__dirname, "dist");
 
 let DIST_DIR = path.join(__dirname, "src");
 
-let server_port = process.env.PORT || 3003;
+let server_port = process.env.PORT || 4000;
 
 app.use(cors());
 app.use(bodyParser.json());

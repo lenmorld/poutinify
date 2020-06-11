@@ -13,10 +13,11 @@ class Reviews extends React.Component {
       );
     }
 
+    // TODO navigate between reviews
     return (
       <div className="reviews">
-            <Review review={reviews[0]}
-                    key={reviews[0].id}/>
+        <Review review={reviews[0]}
+          key={reviews[0].id} />
       </div>
     );
 
