@@ -2,8 +2,6 @@
 import React from 'react';
 import ReactDOM from "react-dom";
 
-import { BrowserRouter, Route } from 'react-router-dom';
-
 // components
 import Header from './components/Header';
 import App from './components/App';
@@ -19,20 +17,11 @@ const Contact = () => (
 const Main = () => (
   <div class="container">
     <Header />
-    {/* <hr /> */}
-    <Route exact path='/' component={App} />
-    <Route path='/about' component={About} />
-    <Route path='/contact' component={Contact} />
+    <App />
   </div>
 )
 
-const Root = () => (
-  <BrowserRouter>
-    <Main />
-  </BrowserRouter>
-)
-
 ReactDOM.render(
-  <Root />,
+  <Main />,
   document.getElementById('root')
 );
