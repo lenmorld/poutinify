@@ -112,7 +112,7 @@ class PlaceDetailInfo extends React.Component {
     return (
       <div className="place-detail-info" >
         <h2>{place.name}</h2>
-        <h3>{place.location.address1}</h3>
+        <div className="place-location">{place.location.address1}</div>
 
         <div className="place-rating">
           {

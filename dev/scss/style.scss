@@ -11,7 +11,7 @@ body {
 
 /* use viewport-relative units to cover page fully */
 body {
-	height: 100vh;
+	// height: 100vh;
 	// width: 100vw;
 }
 
@@ -24,17 +24,30 @@ ul {
 	list-style-type: none;
 }
 
-@mixin padding {
-	padding: 10px;
+h2 {
+	margin: 0;
+}
+
+@mixin mobile {
+	@media screen and (max-width: 780px) {
+		@content;
+	}
 }
 
 $primary: orange;
 $light-cheese: #ffb97b;
+$lighter_cheese: #ffdb99;
 $gravy: #86644f;
 
 $header-height: 75px;
 $info-height: 200px;
 
+$spacing-medium: 10px;
+$spacing-large: 20px;
+
+html {
+	font-size: 16px;
+}
 
 body {
 	//font-family: 'Patrick Hand', cursive;
@@ -42,9 +55,9 @@ body {
 	color: $gravy;
 
 	background-color: $gravy;
-}
 
-.container {}
+	font-size: 0.75rem;
+}
 
 h1 {
 	color: $primary;
@@ -63,10 +76,18 @@ a:hover {
 	color: $light-cheese;
 }
 
+.location-title,
+.place-location {
+	padding-top: $spacing-medium;
+	padding-bottom: $spacing-medium;
+	font-size: 1rem;
+}
+
+
 header {
 	background-color: $gravy;
 
-	padding-left: 20px;
+	padding-left: $spacing-large;
 
 	display: flex;
 	flex-direction: row;
@@ -75,17 +96,23 @@ header {
 
 	flex-wrap: wrap;
 
+	@include mobile {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
 	.header-links {
 		ul {
-			// padding: 0;
+			padding: 0;
+			margin: 0;
 			display: flex;
 			flex-direction: row;
-			// justify-content: space-around;
+			justify-content: flex-start;
 
 			li {
 				display: inline-block;
-				// margin-left: 10px;
-				padding: 0 20px;
+				// margin-left: $spacing-medium;
+				padding: $spacing-large $spacing-large $spacing-large 0;
 			}
 		}
 
@@ -93,8 +120,8 @@ header {
 
 	.powered_by {
 		// position: absolute;
-		// top: 10px;
-		// right: 10px;
+		// top: $spacing-medium;
+		// right: $spacing-medium;
 
 		display: flex;
 		flex-direction: row;
@@ -104,12 +131,12 @@ header {
 
 		div {
 			// display: inline-block;
-			// padding-top: 10px;
+			// padding-top: $spacing-medium;
 			color: white;
 		}
 
 		img.yelp_logo {
-			margin-left: 10px;
+			margin-left: $spacing-medium;
 			height: 50px;
 		}
 	}
@@ -121,37 +148,35 @@ header {
 main {
 	display: flex;
 	flex-direction: row;
-	// flex-wrap: wrap;
 
-	// TODO: wrap on media breakpoint
-}
-
-@media screen and (max-width: 780px) {
-	main {
+	@include mobile() {
 		flex-direction: column;
 	}
 }
 
 .left {
 	// min-width: 30%;
-	background: #ffdb99;
-	padding-top: 10px;
+	background: $lighter_cheese;
+	padding-top: $spacing-medium;
+	padding-bottom: $spacing-medium;
 }
 
 .right-wrapper {
 	display: flex;
 	// flex-direction: column;
 	flex-direction: row;
-}
 
-@media screen and (max-width: 780px) {
-	.right-wrapper {
+	padding-top: $spacing-medium;
+	padding-bottom: $spacing-medium;
+	background: $lighter_cheese;
+
+	@include mobile {
 		flex-direction: column;
+		padding-top: 0;
 	}
 }
 
 .top-right {
-	// background-color: #ffa500;
 	background-color: #e69500;
 	flex-basis: 30%;
 }
@@ -164,6 +189,7 @@ main {
 .place-list {
 	display: flex;
 	flex-direction: column;
+
 	// remove browser default list indentation
 	padding: 0;
 	margin: 0;
@@ -171,7 +197,21 @@ main {
 	// enforce names to be visible
 	min-width: 300px;
 
+	// keep within height of map
+	// max-height: 600px;
+	// overflow: hidden;
+	max-height: 700px;
+	overflow-y: scroll;
+
+	@include mobile {
+		flex-direction: row;
+		max-width: 780px;
+		overflow: scroll;
+	}
+
 	.place-list-item {
+		white-space: nowrap;
+
 		background-color: #e69500;
 		border: 2px dashed $gravy;
 		color: $gravy;
@@ -179,7 +219,7 @@ main {
 		padding: 5px;
 
 		.place-name {
-			font-size: 20px;
+			font-size: 1rem;
 		}
 
 		&.selected {
@@ -193,26 +233,12 @@ main {
 	}
 }
 
-@media screen and (max-width: 780px) {
-	.place-list {
-		flex-direction: row;
-		max-width: 780px;
-		overflow: scroll;
-	}
-}
-
 .place-detail-info {
 	background-color: #e69500;
-	// border: 2px dashed $gravy;
 	color: $gravy;
-	// margin: 10px auto;
-	// width: 90%;
-	padding: 10px;
+	padding: $spacing-medium;
 
 	.place-rating {
-		// flex-grow: 2;
-		margin: 20px;
-
 		.checked {
 			color: orange;
 		}
@@ -227,29 +253,23 @@ main {
 		flex-wrap: wrap;
 
 		img.place-image {
-			width: 80%;
-			// height: 200px;
-			margin: 10px;
+			width: 90%;
+			margin: $spacing-medium;
 		}
 
 		.reviews {
-			.review {
-				// margin: 20px;
+			font-family: 'Patrick Hand', 'Comic Sans', Arial, Helvetica, sans-serif;
+			letter-spacing: 0.05em;
+			font-size: 1rem;
 
+
+			.review {
 				display: flex;
 				flex-direction: row;
-				// flex-direction: column;
-				// flex-wrap: wrap;	// wrap onto multiple lines
-				// justify-content: flex-end; // right-justified
-				// align-items: flex-start;
-				// align-content: flex-start;
 
 				.text {
-					// flex-grow: 2;
-
 					padding: 5px;
-					font-size: 12px;
-					font-family: arial;
+					font-size: 0.875rem;
 					font-weight: bold;
 					font-style: italic;
 				}
@@ -257,6 +277,7 @@ main {
 				.user {
 					display: flex;
 					flex-direction: column;
+					font-weight: bold;
 					// border: 2px solid $gravy;
 
 					img {
@@ -273,7 +294,7 @@ main {
 				flex-direction: row;
 				justify-content: space-between;
 
-				font-size: 12px;
+				// font-size: 12px;
 
 				.user-rating {}
 

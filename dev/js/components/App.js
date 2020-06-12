@@ -66,7 +66,7 @@ class App extends React.Component {
                     </div>
 
                     <div className="bottom-right">
-                        <h3>Where is it?</h3>
+                        <div className="location-title">Where is it?</div>
                         <PlaceDetailMap place={this.state.selectedPlace} />
                     </div>
                 </div>
