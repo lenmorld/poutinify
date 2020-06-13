@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch-build": "webpack --watch --progress --profile --colors",
     "watch-server": "nodemon server.js",
-    "start": "npm-run-all --parallel watch-server watch-build"
+    "start": "npm-run-all --parallel watch-server watch-build",
+    "build": "webpack --progress --profile --colors"
   },
   "repository": {
     "type": "git",
