@@ -4,7 +4,6 @@ import User from './User'; ``
 import Rating from "./Rating"
 
 const Review = ({ review }) => {
-  debugger;
   return (
     <div className="review">
       <div className="left-review">

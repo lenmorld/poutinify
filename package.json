@@ -2,13 +2,14 @@
   "name": "poutinify",
   "version": "1.0.0",
   "description": "``` $ npm init $ npm install express --save $ npm start ```",
-  "main": "server.js",
+  "main": "functions/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch-build": "webpack --watch --progress --profile --colors",
-    "watch-server": "nodemon server.js",
-    "start": "npm-run-all --parallel watch-server watch-build",
-    "build": "webpack --progress --profile --colors"
+    "watch-ui": "webpack --watch --progress --profile --colors",
+    "watch-server": "nodemon server-local.js",
+    "start": "npm-run-all --parallel watch-server watch-ui",
+    "build": "webpack --progress --profile --colors",
+    "serverless": "netlify-lambda build serverless"
   },
   "repository": {
     "type": "git",
@@ -33,12 +34,14 @@
     "sass-loader": "^7.1.0"
   },
   "devDependencies": {
-    "babel": "^6.23.0",
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.5",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "v8.0.0-beta.0",
     "css-loader": "^1.0.0",
+    "netlify-lambda": "^1.6.3",
+    "serverless-http": "^2.5.0",
     "style-loader": "^0.22.1",
     "webpack": "^4.16.5",
     "webpack-cli": "^3.1.0"

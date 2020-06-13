@@ -5,7 +5,7 @@ module.exports = {
   context: path.join(__dirname, './'),
   entry: './dev/js/index.js',
   output: {
-    path: path.join(__dirname, 'src'),
+    path: path.join(__dirname, 'public'),
     filename: 'bundle.js',
   },
   resolve: {
@@ -17,9 +17,6 @@ module.exports = {
         test: /\.jsx?$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
-        options: {
-          presets: ["es2015", "react"]
-        }
       },
       {
         test: /\.scss/,
