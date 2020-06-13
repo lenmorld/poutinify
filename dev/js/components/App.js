@@ -3,6 +3,7 @@ import React from 'react';
 import '../../scss/style.scss';    // scss can be used by all
 
 import storage from '../helpers/storage'
+import data_fetch from '../helpers/data_fetch'
 
 import PlaceList from './PlaceList';
 import PlaceDetailInfo from './PlaceDetailInfo';
@@ -38,8 +39,7 @@ class App extends React.Component {
         if (savedPlaces) {
             this.updatePlaces(savedPlaces)
         } else {
-            fetch('/yelp/places')
-                .then(res => res.json())
+            data_fetch.get('/yelp/places')
                 .then(places => {
                     storage.set('places', places)
                     this.updatePlaces(places)

@@ -4,6 +4,7 @@ import Reviews from './Reviews';
 import Rating from './Rating'
 
 import storage from '../helpers/storage'
+import data_fetch from '../helpers/data_fetch'
 
 class PlaceDetailInfo extends React.Component {
 
@@ -39,8 +40,7 @@ class PlaceDetailInfo extends React.Component {
           }
         );
       } else {
-        fetch(`/yelp/places/${placeId}`)
-          .then(res => res.json())
+        data_fetch.get(`/yelp/places/${placeId}`)
           .then(placeDetails => {
             // console.log("(backend->) placeDetails: ", {placeDetails});
 
@@ -64,7 +64,7 @@ class PlaceDetailInfo extends React.Component {
           }
         );
       } else {
-        fetch(`/yelp/reviews/${placeId}`)
+        data_fetch.get(`/yelp/reviews/${placeId}`)
           .then(res => res.json())
           .then(reviews => {
 
