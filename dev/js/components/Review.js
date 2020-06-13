@@ -1,27 +1,20 @@
 import React from 'react';
 
 import User from './User'; ``
+import Rating from "./Rating"
 
-const Review = (props) => {
-
-  const { review } = props;
-
+const Review = ({ review }) => {
+  debugger;
   return (
-    <div>
-      <div className="review">
+    <div className="review">
+      <div className="left-review">
         <User user={review.user} />
-        <div className="text">
-          {review.text}
-        </div>
+        <Rating rating={review.rating} size="small" />
       </div>
-
-      <div className="review-extras">
-        <div className="user-rating">
-          User rating: {`${review.rating}/5`}
-        </div>
-
-        <div className="time-created">
-          {review.time_created}
+      <div className="right-review">
+        <div className="text">{review.text}</div>
+        <div className="read-more">
+          <a href={review.url} target="_blank" rel="noopener noreferrer">Read more</a>
         </div>
       </div>
     </div>

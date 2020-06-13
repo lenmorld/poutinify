@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { Link } from 'react-router-dom';
-
 // import ReactDOM from 'react-dom';
 import '../../scss/style.scss';    // scss can be used by all
 
@@ -11,6 +9,7 @@ class Header extends React.Component {
     return (
       <header>
         <h1>Poutinify</h1>
+        <div className="tagline">Top poutine places in Montreal!</div>
         <div class="powered_by">
           <div>Powered by</div>
           <div>

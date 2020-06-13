@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Reviews from './Reviews';
+import Rating from './Rating'
 
 import storage from '../helpers/storage'
 
@@ -41,7 +42,6 @@ class PlaceDetailInfo extends React.Component {
         fetch(`/yelp/places/${placeId}`)
           .then(res => res.json())
           .then(placeDetails => {
-            // debugger;
             // console.log("(backend->) placeDetails: ", {placeDetails});
 
             storage.set(`place_${placeId}`, placeDetails)
@@ -115,34 +115,27 @@ class PlaceDetailInfo extends React.Component {
         <div className="place-location">{place.location.address1}</div>
 
         <div className="place-rating">
-          {
-            this.intToList(Math.floor(place.rating)).map((e, i) => {
-              return <span
-                key={`${place.id}_starred_${i}`}
-                className="fa fa-star checked"></span>;
-            })
-          }
-          {
-            this.intToList(5 - Math.floor(place.rating)).map((e, i) => {
-              return <span
-                key={`${place.id}_unstarred_${i}`}
-                className="fa fa-star"></span>;
-            })
-          }
+          <div>
+            <Rating rating={place.rating} size="large" />
+          </div>
+          <div className="review-count">{place.review_count} reviews</div>
+          <div className="yelp-business-link">
+            <a href={place.url} target="_blank" rel="noopener noreferrer">
+              <img src="./images/Yelp_trademark_RGB-crop.png" alt="Yelp link to business" />
+            </a>
+          </div>
         </div>
 
         <div className="detail-body">
-          <img
-            className="place-image"
-            src={place.image_url}
-            alt={place.name} />
+          <div className="place-image">
+            <img
+              src={place.image_url}
+              alt={place.name} />
+          </div>
 
           <Reviews reviews={this.state.reviews} />
         </div>
-
-
-
-      </div>
+      </div >
     )
   }
 }

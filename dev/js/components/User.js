@@ -6,10 +6,12 @@ const User = (props) => {
 
   return (
     <div className="user">
+      <div className="user-image">
         <img src={user.image_url} alt={user.name} />
-        <div className="name">
-          {user.name}
-        </div>
+      </div>
+      <div className="name">
+        {user.name}
+      </div>
     </div>
   );
 }

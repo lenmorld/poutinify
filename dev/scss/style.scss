@@ -24,24 +24,22 @@ ul {
 	list-style-type: none;
 }
 
-h2 {
-	margin: 0;
-}
-
 @mixin mobile {
 	@media screen and (max-width: 780px) {
 		@content;
 	}
 }
 
-$primary: orange;
+$medium-cheese: #e69500;
 $light-cheese: #ffb97b;
-$lighter_cheese: #ffdb99;
+$primary: $light-cheese;
+$lighter-cheese: #ffdb99;
 $gravy: #86644f;
 
 $header-height: 75px;
 $info-height: 200px;
 
+$spacing-small: 5px;
 $spacing-medium: 10px;
 $spacing-large: 20px;
 
@@ -61,10 +59,22 @@ body {
 
 h1 {
 	color: $primary;
+	font-size: 1.75rem;
+	margin: $spacing-medium 0;
+}
+
+h2 {
+	margin: 0;
+	font-size: 1.5rem;
 }
 
 p {
 	color: $primary;
+}
+
+.tagline {
+	color: $primary;
+	font-size: 1.5rem;
 }
 
 a {
@@ -73,16 +83,19 @@ a {
 }
 
 a:hover {
-	color: $light-cheese;
+	color: $lighter-cheese;
 }
 
 .location-title,
 .place-location {
 	padding-top: $spacing-medium;
-	padding-bottom: $spacing-medium;
-	font-size: 1rem;
+	// padding-bottom: $spacing-medium;
+	font-size: 1.25rem;
 }
 
+.location-title {
+	padding-bottom: $spacing-medium;
+}
 
 header {
 	background-color: $gravy;
@@ -139,19 +152,22 @@ main {
 
 .left {
 	// min-width: 30%;
-	background: $lighter_cheese;
+	background: $lighter-cheese;
 	padding-top: $spacing-medium;
-	padding-bottom: $spacing-medium;
+	// padding-bottom: $spacing-medium;
 }
 
 .right-wrapper {
+	// always bigger than the left side
+	flex-grow: 1;
+
 	display: flex;
 	// flex-direction: column;
 	flex-direction: row;
 
 	padding-top: $spacing-medium;
-	padding-bottom: $spacing-medium;
-	background: $lighter_cheese;
+	// padding-bottom: $spacing-medium;
+	background: $lighter-cheese;
 
 	@include mobile {
 		flex-direction: column;
@@ -160,13 +176,19 @@ main {
 }
 
 .top-right {
-	background-color: #e69500;
-	flex-basis: 30%;
+	background-color: $medium-cheese;
+	flex-basis: 35%;
 }
 
 .bottom-right {
-	background-color: #e69500;
-	flex-basis: 70%;
+	background-color: $medium-cheese;
+	flex-basis: 65%;
+
+	@include mobile {
+		margin-top: $spacing-medium;
+
+		padding-left: $spacing-medium;
+	}
 }
 
 .place-list {
@@ -183,8 +205,9 @@ main {
 	// keep within height of map
 	// max-height: 600px;
 	// overflow: hidden;
-	max-height: 700px;
-	overflow-y: scroll;
+	// max-height: 700px;
+	max-height: 90vh;
+	overflow: auto;
 
 	@include mobile {
 		flex-direction: row;
@@ -195,14 +218,16 @@ main {
 	.place-list-item {
 		white-space: nowrap;
 
-		background-color: #e69500;
+		background-color: $medium-cheese;
 		border: 2px dashed $gravy;
 		color: $gravy;
 		cursor: pointer;
 		padding: 5px;
 
+		margin: 5px;
+
 		.place-name {
-			font-size: 1rem;
+			font-size: 1.125rem;
 		}
 
 		&.selected {
@@ -210,34 +235,54 @@ main {
 			background-color: #86644f;
 
 			.place-name {
-				color: $light-cheese;
+				color: $primary;
 			}
 		}
 	}
 }
 
 .place-detail-info {
-	background-color: #e69500;
+	background-color: $medium-cheese;
 	color: $gravy;
 	padding: $spacing-medium;
 
 	.place-rating {
-		.checked {
-			color: orange;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+
+		flex-wrap: wrap;
+
+		.review-count {
+			// margin-left: $spacing-large;
+			font-size: 1.125rem;
+		}
+
+		.yelp-business-link {
+			img {
+				max-height: 50px;
+			}
 		}
 	}
 
 	.detail-body {
 		display: flex;
-		flex-direction: row;
-		justify-content: flex-start;
-		align-items: stretch;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
 
-		flex-wrap: wrap;
+		.place-image {
+			max-height: 350px;
+			overflow: hidden;
+			// margin-top: $spacing-medium;
+			margin-bottom: $spacing-medium;
+			text-align: center;
 
-		img.place-image {
-			width: 90%;
-			margin: $spacing-medium;
+			img {
+				max-width: 80%;
+				// margin: 0 auto;
+			}
 		}
 
 		.reviews {
@@ -245,50 +290,117 @@ main {
 			letter-spacing: 0.05em;
 			font-size: 1rem;
 
-
 			.review {
 				display: flex;
 				flex-direction: row;
+				padding: $spacing-small;
+				background: $lighter-cheese;
 
-				.text {
-					padding: 5px;
-					font-size: 0.875rem;
-					font-weight: bold;
-					font-style: italic;
+				.left-review {
+					flex-direction: column;
+
+					.user {
+						display: flex;
+						flex-direction: column;
+						font-weight: bold;
+						// border: 2px solid $gravy;
+
+						.name {
+							max-width: 75px;
+							overflow: hidden;
+							white-space: nowrap;
+						}
+
+						.user-image {
+							max-height: 100px;
+							overflow: hidden;
+							margin: 5px;
+
+							img {
+								max-width: 75px;
+							}
+						}
+
+					}
 				}
 
-				.user {
+				.right-review {
 					display: flex;
 					flex-direction: column;
-					font-weight: bold;
-					// border: 2px solid $gravy;
 
-					.name {
-						max-width: 75px;
-						overflow: hidden;
-						white-space: nowrap;
+					justify-content: flex-start;
+					align-items: flex-end;
+
+					.text {
+						padding: 5px;
+						font-size: 1rem;
+						font-weight: bold;
+						font-style: italic;
 					}
 
-					img {
-						max-width: 75px;
-						// height: 75px;
-						margin: 5px;
+					.read-more {
+						padding: 5px;
+						font-size: 1.5rem;
+
+						a {
+							color: $medium-cheese;
+
+							&:hover {
+								color: $gravy;
+							}
+						}
 					}
+
 				}
-
 			}
 
-			.review-extras {
-				display: flex;
-				flex-direction: row;
-				justify-content: space-between;
+			// .review-extras {
+			// 	display: flex;
+			// 	flex-direction: row;
+			// 	justify-content: space-between;
 
-				// font-size: 12px;
+			// 	// font-size: 12px;
 
-				.user-rating {}
+			// 	.user-rating {}
 
-				.time-created {}
-			}
+			// 	.time-created {}
+			// }
 		}
 	}
+}
+
+
+// scrollbar
+
+$scrollbarBG: $lighter-cheese;
+$thumbBG: $gravy;
+
+
+body,
+.place-list {
+	scrollbar-width: thin;
+	scrollbar-color: $thumbBG $scrollbarBG;
+
+	&::-webkit-scrollbar {
+		width: 11px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: $scrollbarBG;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: $thumbBG;
+		border-radius: 6px;
+		border: 3px solid $scrollbarBG;
+	}
+}
+
+
+// map
+
+#mapid {
+	max-width: 95%;
+	max-height: 80vh;
+	margin: 0 auto;
 }

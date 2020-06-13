@@ -36,7 +36,6 @@ class App extends React.Component {
         const savedPlaces = storage.get('places')
 
         if (savedPlaces) {
-            debugger;
             this.updatePlaces(savedPlaces)
         } else {
             fetch('/yelp/places')
