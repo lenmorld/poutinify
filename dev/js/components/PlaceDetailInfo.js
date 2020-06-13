@@ -65,7 +65,6 @@ class PlaceDetailInfo extends React.Component {
         );
       } else {
         data_fetch.get(`/yelp/reviews/${placeId}`)
-          .then(res => res.json())
           .then(reviews => {
 
             storage.set(`reviews_${placeId}`, reviews)
