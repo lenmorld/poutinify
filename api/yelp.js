@@ -5,6 +5,12 @@ var request = require('request');
 // import config file
 const config = require('../config');
 
+router.get('/test', function (req, res) {
+    res.json({
+        message: "Yelp OK"
+    })
+});
+
 router.get('/places', function (req, res, next) {
     // use the token to access the Yelp API
     var options = {
