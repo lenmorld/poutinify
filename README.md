@@ -5,9 +5,10 @@
 
 ### Tech used
 
-- react
-- node
-- webpack
+- React
+- Node + Express
+- Webpack, Babel
+- Netlify + serverless functions
 
 ### API, Libraries used
 
@@ -16,9 +17,13 @@
 
 ### Dev
 
+Watch both UI (webpack) and server (nodemon) changes
 ```
 $ npm start
+```
 
-# on another terminal
-$ webpack --watch
+
+### Build
+```
+$ npm run build
 ```
