@@ -28,6 +28,12 @@ app.get("/", function (req, res) {
     res.sendFile(path.join(DIST_DIR, "index.html"));
 });
 
+app.get("/test", function (req, res) {
+    res.json({
+        message: "OK"
+    });
+});
+
 // put Yelp API here, etc
 
 app.use('/yelp', require('../api/yelp'));
