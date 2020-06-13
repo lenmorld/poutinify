@@ -17,6 +17,8 @@ app.use(bodyParser.urlencoded({
 // serve React app on dist
 app.use(express.static(DIST_DIR));
 
+app.use('/favicon.ico', express.static('./favicon.ico'));
+
 app.get("/", function (req, res) {
     res.sendFile(path.join(DIST_DIR, "index.html"));
 });
