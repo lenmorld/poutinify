@@ -1,3 +1,3 @@
 [build]
-  command = "npm install && npm run build && npm run serverless"
+  command = "npm install && npm run build"
   functions = "functions"

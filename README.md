@@ -13,7 +13,7 @@
 ### API, Libraries used
 
 - Yelp API
-- Leaflet map (alternative to Google Maps)
+- Leaflet + OpenStreetMap (open-source alternative to Google Maps)
 
 ### Dev
 

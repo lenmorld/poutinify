@@ -2,14 +2,15 @@
   "name": "poutinify",
   "version": "1.0.0",
   "description": "``` $ npm init $ npm install express --save $ npm start ```",
-  "main": "functions/server.js",
+  "main": "serverless/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch-ui": "webpack --watch --progress --profile --colors",
     "watch-server": "nodemon server-local.js",
     "start": "npm-run-all --parallel watch-server watch-ui",
-    "build": "webpack --progress --profile --colors",
-    "serverless": "netlify-lambda build serverless"
+    "build-ui": "webpack --progress --profile --colors",
+    "build-serverless": "netlify-lambda build serverless",
+    "build": "npm run build-ui && npm run build-serverless"
   },
   "repository": {
     "type": "git",
