@@ -41,11 +41,9 @@ app.use(bodyParser.urlencoded({
 
 
 // SERVERLESS
-router.use('/favicon.ico', express.static('./favicon.ico'));
 app.use('/.netlify/functions/server', router);  // path must route to lambda
 
 // local
-app.use('/favicon.ico', express.static('./favicon.ico'));
 app.use('/', router);  // path must route to lambda
 
 module.exports = app;
