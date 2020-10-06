@@ -1,3 +1,7 @@
+### Demo:
+
+https://poutinify.netlify.app/
+
 ### Preview
 
 ![poutinify v1](https://raw.githubusercontent.com/lenmorld/poutinify/master/screens/screen1.jpg)
@@ -19,9 +23,9 @@
 
 Watch both UI (webpack) and server (nodemon) changes
 ```
+$ npm install
 $ npm start
 ```
-
 
 ### Build
 ```
