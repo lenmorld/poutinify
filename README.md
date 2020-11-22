@@ -4,7 +4,7 @@ https://poutinify.netlify.app/
 
 ### Preview
 
-![poutinify v1](https://raw.githubusercontent.com/lenmorld/poutinify/master/screens/screen1.jpg)
+![poutinify v1](https://res.cloudinary.com/dvfhgkkpe/image/upload/v1606081485/lennythedev/poutinify.png)
 
 
 ### Tech used
