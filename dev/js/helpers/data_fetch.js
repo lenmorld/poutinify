@@ -1,18 +1,12 @@
-/*
-	hack to know if we're running on server/cloud
-	or local
-	1. if cloud - use serverless functions
-		e.g. website.com/.netlify/functions/server/items
-	2. if local - use
-		e.g. website.com/items
+// fetch helper
+// sends requests either to cloud serverless function or local
+// based on env
+// e.g. if DEPLOYED or NETLIFY(built-in), send to https://poutinify.netlify.app/.netlify/functions/server/<endpoint>
+// else http://localhost:4000/<endpoint>"
 
-	This hack is used because I didn't find a simple way to:
-	1. read .env from frontend
-	2. automatically redirect requests from .netlify/functions/server/ to /
-			based on environment
-*/
 function get(endpoint) {
-	const server_base = window.location.hostname === "poutinify.netlify.app" ? '/.netlify/functions/server' : ''
+	console.log("ENV", typeof process.env.DEPLOYED, process.env.DEPLOYED, process.env.NETLIFY, process.env.YELP_API_KEY)
+	const server_base = (process.env.DEPLOYED === "true" || process.env.NETLIFY) ? '/.netlify/functions/server' : ''
 	const data_endpoint = [server_base, endpoint].join('')
 
 	console.log(`Sending request to ${data_endpoint}`)
