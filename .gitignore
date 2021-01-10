@@ -2,3 +2,5 @@
 node_modules
 bundle.js
 .env
+# Local Netlify folder
+.netlify
