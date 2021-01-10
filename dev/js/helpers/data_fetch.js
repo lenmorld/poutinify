@@ -6,7 +6,7 @@
 
 function get(endpoint) {
 	// TODO: all these env's are undefined when deployed
-	console.log("ENV", typeof process.env.DEPLOYED, process.env.DEPLOYED, process.env.NETLIFY, process.env.YELP_API_KEY)
+	console.log("[ENV]", typeof process.env.DEPLOYED, process.env.DEPLOYED, process.env.NETLIFY)
 	// const server_base = (process.env.DEPLOYED === "true" || process.env.NETLIFY) ? '/.netlify/functions/server' : ''
 	const server_base = process.env.DEPLOYED === "false" ? '' : '/.netlify/functions/server'
 	const data_endpoint = [server_base, endpoint].join('')
