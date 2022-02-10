@@ -42,7 +42,7 @@
     "css-loader": "^1.0.0",
     "dotenv-webpack": "^6.0.0",
     "netlify-lambda": "^1.6.3",
-    "node-sass": "^4.0.0",
+    "node-sass": "^7.0.0",
     "serverless-http": "^2.5.0",
     "style-loader": "^0.22.1",
     "webpack": "^4.16.5",
